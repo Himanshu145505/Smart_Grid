@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Smart Energy Grid Optimization</title>
+  <link rel="stylesheet" href="../static/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+  <header class="p-3 shadow-sm" style="background: linear-gradient(90deg, #C88858, #A66A3C);">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Logo"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fw-bold fs-4">Smart Grid</span>
+        </a>
+        <ul class="nav col-lg-auto">
+          <li><a href="index.html" class="nav-link px-3 text-white fw-medium">Home</a></li>
+          <li><a href="features.html" class="nav-link px-3 text-white fw-medium">Features</a></li>
+          <li><a href="about.html" class="nav-link px-3 text-white fw-medium">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../static/images/byte-1.jpg" class="d-block w-100" alt="Grid Stability">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="fw-bold">Grid Stability</h5>
+          <p>Real-time adjustments for a resilient energy network.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/byte-2.jpg" class="d-block w-100" alt="Wind Energy">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="fw-bold">Wind Energy</h5>
+          <p>Optimize renewable power with predictive modeling.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/byte-3.jpg" class="d-block w-100" alt="Sustainability">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="fw-bold">Sustainability</h5>
+          <p>Reduce waste and reliance on fossil fuels.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="container paragraph-gap py-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="fw-bold text-white mb-4">The Problem</h2>
+        <p class="text-light">Our current energy grid struggles to handle renewable energy fluctuations and unpredictable demand, leading to inefficiencies, higher costs, and blackouts. We need a smarter system to optimize energy use and reduce fossil fuel dependency.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container paragraph-gap py-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="fw-bold text-white mb-4">Methodology</h2>
+        <p class="text-light">Using machine learning, we forecast energy demand and optimize renewable sources like wind and solar. Our platform provides a sleek dashboard and API for real-time insights, enhancing grid stability and resource allocation.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-5" style="background: #1A1A1A;">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-2 mb-3">
+          <h5 class="text-white">Links</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-light">Home</a></li>
+            <li class="nav-item mb-2"><a href="features.html" class="nav-link p-0 text-light">Features</a></li>
+            <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-light">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-5 offset-md-1 mb-3">
+          <form>
+            <h5 class="text-white">Newsletter</h5>
+            <p class="text-light">Stay updated with our latest innovations.</p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <input id="newsletter1" type="email" class="form-control" placeholder="Email address">
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top text-light">
+        <p>© 2025 Smart Grid Team. All rights reserved.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3"><a href="#" class="text-light"><i class="bi bi-twitter"></i></a></li>
+          <li class="ms-3"><a href="#" class="text-light"><i class="bi bi-instagram"></i></a></li>
+          <li class="ms-3"><a href="#" class="text-light"><i class="bi bi-facebook"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

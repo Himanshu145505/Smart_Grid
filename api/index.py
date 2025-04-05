@@ -1,23 +1,20 @@
 # Imports
-
 from flask import Flask, render_template, request, redirect, url_for
 import pickle
 import sklearn
+import os
 
-#############################################################
-
-with open('models/model1.pkl', 'rb') as file:
+# Load pickled models (adjust path for api/ folder)
+with open(os.path.join(os.path.dirname(__file__), '..', 'models', 'model1.pkl'), 'rb') as file:
     pickled_model1 = pickle.load(file)
 
-with open('models/model2.pkl', 'rb') as file:
+with open(os.path.join(os.path.dirname(__file__), '..', 'models', 'model2.pkl'), 'rb') as file:
     pickled_model2 = pickle.load(file)
 
-#############################################################
+# Initialize Flask app with corrected template and static paths
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
-app = Flask(__name__)
-
-#############################################################
-
+# Routes for static pages
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -34,19 +31,16 @@ def features():
 def about():
     return render_template('about.html')
 
-#############################################################
-
+# Results route
 @app.route('/results.html')
 def results():
     prediction = request.args.get('prediction')
     return render_template('results.html', prediction=prediction)
 
-#############################################################
-
+# Model 1: Grid Stability Prediction
 @app.route('/model1.html', methods=['POST', 'GET'])
 def model1():
     if request.method == 'POST':
-        
         reaction_time_producer = float(request.form['reactionTimeProducer'])
         reaction_time_consumer1 = float(request.form['reactionTimeConsumer1'])
         reaction_time_consumer2 = float(request.form['reactionTimeConsumer2'])
@@ -64,15 +58,14 @@ def model1():
     
     return render_template("model1.html")
 
+# Model 2: Wind Turbine Energy Prediction
 @app.route('/model2.html', methods=['POST', 'GET'])
 def model2():
-    
     if request.method == 'POST':
         wind_speed = float(request.form['windSpeed'])
         wind_direction = float(request.form['windDirection'])
         power_curve = float(request.form['powerCurve'])
 
-    
         prediction = pickled_model2.predict([[wind_speed, wind_direction, power_curve]])
         prediction_with_units = f"{prediction} kW"
 
@@ -80,5 +73,6 @@ def model2():
     
     return render_template("model2.html")
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+# Vercel requires this export for serverless functions
+def handler(request):
+    return app(request.environ, request.start_response)

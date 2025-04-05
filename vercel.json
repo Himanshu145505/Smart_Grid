@@ -13,10 +13,5 @@
         "src": "static/**",
         "use": "@vercel/static"
       }
-    ],
-    "functions": {
-      "api/index.py": {
-        "includeFiles": ["requirements.txt"]
-      }
-    }
+    ]
   }

@@ -4,12 +4,26 @@ import pickle
 import sklearn
 import os
 
-# Load pickled models (adjust path for api/ folder)
-with open(os.path.join(os.path.dirname(__file__), '..', 'models', 'model1.pkl'), 'rb') as file:
-    pickled_model1 = pickle.load(file)
+# Load pickled models with error handling
+try:
+    with open(os.path.join(os.path.dirname(__file__), '..', 'models', 'model1.pkl'), 'rb') as file:
+        pickled_model1 = pickle.load(file)
+except FileNotFoundError as e:
+    print(f"Error loading model1.pkl: {e}")
+    pickled_model1 = None  # Fallback to avoid crash
+except Exception as e:
+    print(f"Error loading model1.pkl: {e}")
+    pickled_model1 = None
 
-with open(os.path.join(os.path.dirname(__file__), '..', 'models', 'model2.pkl'), 'rb') as file:
-    pickled_model2 = pickle.load(file)
+try:
+    with open(os.path.join(os.path.dirname(__file__), '..', 'models', 'model2.pkl'), 'rb') as file:
+        pickled_model2 = pickle.load(file)
+except FileNotFoundError as e:
+    print(f"Error loading model2.pkl: {e}")
+    pickled_model2 = None  # Fallback to avoid crash
+except Exception as e:
+    print(f"Error loading model2.pkl: {e}")
+    pickled_model2 = None
 
 # Initialize Flask app with corrected template and static paths
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
@@ -41,6 +55,8 @@ def results():
 @app.route('/model1.html', methods=['POST', 'GET'])
 def model1():
     if request.method == 'POST':
+        if pickled_model1 is None:
+            return "Error: Model 1 not loaded", 500
         reaction_time_producer = float(request.form['reactionTimeProducer'])
         reaction_time_consumer1 = float(request.form['reactionTimeConsumer1'])
         reaction_time_consumer2 = float(request.form['reactionTimeConsumer2'])
@@ -62,11 +78,13 @@ def model1():
 @app.route('/model2.html', methods=['POST', 'GET'])
 def model2():
     if request.method == 'POST':
+        if pickled_model2 is None:
+            return "Error: Model 2 not loaded", 500
         wind_speed = float(request.form['windSpeed'])
         wind_direction = float(request.form['windDirection'])
         power_curve = float(request.form['powerCurve'])
 
-        prediction = pickled_model2.predict([[wind_speed, wind_direction, power_curve]])
+        prediction = pickled_model2.predict([[wind_speed, wind_direction, powerCurve]])
         prediction_with_units = f"{prediction} kW"
 
         return redirect(url_for('results', prediction=prediction_with_units))
